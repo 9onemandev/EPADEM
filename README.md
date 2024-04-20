@@ -5,7 +5,7 @@ The application is used to assess the configuration of the water supply network 
 
 The program changes the values of geodetic elevations of nodes at each iteration and recalculates the hydraulic calculation.
 Changes are instead made within a user-specified range (GE top and bottom deviation).
-As a result of the calculation, a report is generated, which the program analyzes and if the pressure in the node is less than the minimum pressure specified by the user (MIn. pressure value, m), the network configuration is accepted as unsatisfactory.
+As a result of the calculation, a report is generated, which the program analyzes and if the pressure in the node is less than the minimum pressure specified by the user (Min. pressure value, m), the network configuration is accepted as unsatisfactory.
 Ultimately, the total number of all iterations and the number of unsatisfactory attempts are compared and the percentage of reliability of the selected network configuration is determined.
 
 ![image](https://github.com/9onemandev/EPAMK/assets/163633812/22e438a5-d9aa-4588-a266-39102ed19f32)
