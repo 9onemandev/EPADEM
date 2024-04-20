@@ -21,16 +21,6 @@ There is no license restrictions. Feel free to use it as you want.
 Also i`m not resposible in ccase of some errors in code and produced results.
 
 One important thing!
-Your inp file should contain report section in format like below:
-[REPORT]
-Status No
-Summary No
-NODES All
-LINKS All
-FLOW PRECISION 4
-ELEVATION PRECISION 4
-HEAD PRECISION 4
-PRESSURE PRECISION 4
-Page 0
+Your inp file should contain report section in format like shown in report section.txt.
 
 Compiled app is in release folder (also contains epanet). Code for this app is in src folder.
