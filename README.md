@@ -11,7 +11,8 @@ Ultimately, the total number of all iterations and the number of unsatisfactory 
 ![image](https://github.com/9onemandev/EPAMK/assets/163633812/22e438a5-d9aa-4588-a266-39102ed19f32)
 
 Settings for the number of threads allows you to speed up the simulation process.
-Don`t delete temp file checkbox will allow to save all generated inp and rpt files. So it is possible to take a look inside each iteration of  modeling.
+"Don`t delete temp file" checkbox will allow to save all generated inp and rpt files. So it is possible to take a look inside each iteration of  modeling.
+They will be in app folder in format (1_5.inp), where 1 is thread id and 5 - is iteration number.
 But be careful! In case of big inp file size and big number of iterations you can generate tons of GB of data on your PC.
 
 The Monte Carlo method was used. Distribution of random variables - normal.
