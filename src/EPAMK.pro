@@ -10,12 +10,14 @@ CONFIG += c++11
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
 
 SOURCES += \
+    label.cpp \
     main.cpp \
     epamk_mw.cpp \
     worker.cpp
 
 HEADERS += \
     epamk_mw.h \
+    label.h \
     worker.h
 
 FORMS += \

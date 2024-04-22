@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>476</width>
-    <height>285</height>
+    <height>284</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,28 +23,21 @@
          <item>
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>Thread count:</string>
+            <string>CPU cores to use:</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string>Simulation number:</string>
+            <string>Number simulations to run:</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string>GE top deviation:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>GE bottom deviation:</string>
+            <string>DEM standard deviation:</string>
            </property>
           </widget>
          </item>
@@ -84,20 +77,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QDoubleSpinBox" name="td_spin">
-           <property name="minimum">
-            <double>0.010000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>20.000000000000000</double>
-           </property>
-           <property name="value">
-            <double>5.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="bd_spin">
+          <widget class="QDoubleSpinBox" name="dem_spin">
            <property name="minimum">
             <double>0.010000000000000</double>
            </property>
@@ -140,6 +120,52 @@
      </item>
      <item>
       <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="about">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="Label" name="credits">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 170, 0);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_4">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -206,6 +232,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Label</class>
+   <extends>QLabel</extends>
+   <header location="global">label.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

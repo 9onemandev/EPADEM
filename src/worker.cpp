@@ -34,8 +34,8 @@ void Worker::run()
 
     for(int i = 0; i < simNum; i++)
     {
-        QString newInpFilePath = qApp->applicationDirPath() + "/" + QString("%1_%2.inp").arg(id).arg(i);
-        QString reportFilePath = qApp->applicationDirPath() + "/" + QString("%1_%2.rpt").arg(id).arg(i);
+        QString newInpFilePath = qApp->applicationDirPath() + "/Sandbox/" + QString("%1_%2.inp").arg(id).arg(i);
+        QString reportFilePath = qApp->applicationDirPath() + "/Sandbox/" + QString("%1_%2.rpt").arg(id).arg(i);
 
         //create new INP file with GE modified values
         QString inpTemp = *inpData;

@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QTextStream>
+#include <QDesktopServices>
 #include <QThread>
 #include <QDebug>
 #include "worker.h"
@@ -16,6 +17,19 @@ EPAMK_MW::EPAMK_MW(QWidget *parent)
       negativeRunCounter(0)
 {
     ui->setupUi(this);
+
+    setWindowTitle(tr("EPA-DEM risk evaluator"));
+
+    ui->about->setText("About: This program performs a Monte Carlo risk analysis on an EPANET file to assess the risk associated\n"
+                       "\twith using a digital elevation model (DEM). It generates numerous derived files by randomly adjusting\n"
+                       "\televations in the original file according to a defined normal distribution. Then it runs simulations of\n"
+                       "\teach file to identify those that would fail (pressure below a set threshold) and returns a success rate.");
+
+    ui->credits->setText(tr("Concept and contact: Santiago Arnalich www.arnalich.com/EPADEM\n"
+                            "Programmer: Yurii Rybachuk jrybachuck@gmail.com"));
+    connect(ui->credits, &Label::clicked, this, [=](const QString &link){
+        QDesktopServices::openUrl(QUrl(link));
+    });
 
     //get max num of thread available from hardware
     int atv = QThread::idealThreadCount();
@@ -137,6 +151,10 @@ void EPAMK_MW::run()
         ui->progressBar->setMaximum(ui->sn_spin->value());
         ui->progressBar->show();
 
+        //check temp storage folder existance
+        if(!QDir().exists(qApp->applicationDirPath() + "/Sandbox"))
+            QDir().mkdir(qApp->applicationDirPath() + "/Sandbox");
+
         //init threads
         negativeRunCounter = 0;
         int runsPerThread = std::floor(ui->sn_spin->value() / ui->tc_spin->value());
@@ -153,7 +171,7 @@ void EPAMK_MW::run()
                 }
             }
 
-            Worker *worker = new Worker(i, inpData, runsPerThread, ui->td_spin->value(), ui->bd_spin->value(), ui->mp_spin->value(), ui->checkBox->isChecked());
+            Worker *worker = new Worker(i, inpData, runsPerThread, ui->dem_spin->value(), ui->dem_spin->value(), ui->mp_spin->value(), ui->checkBox->isChecked());
 
             //update progress
             connect(worker, &Worker::iterDone, this, [=](){
