@@ -25,7 +25,7 @@ EPAMK_MW::EPAMK_MW(QWidget *parent)
                        "\televations in the original file according to a defined normal distribution. Then it runs simulations of\n"
                        "\teach file to identify those that would fail (pressure below a set threshold) and returns a success rate.");
 
-    ui->credits->setText(tr("Concept and contact: Santiago Arnalich www.arnalich.com/EPADEM\n"
+    ui->credits->setText(tr("Concept and contact: Santiago Arnalich www.arnalich.com/EPADEM.html\n"
                             "Programmer: Yurii Rybachuk jrybachuck@gmail.com"));
     connect(ui->credits, &Label::clicked, this, [=](const QString &link){
         QDesktopServices::openUrl(QUrl(link));

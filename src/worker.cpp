@@ -32,6 +32,60 @@ void Worker::run()
     std::mt19937 engine(clock());
     QString epaPath = qApp->applicationDirPath() + "/" + "runepanet.exe";
 
+    //distribution test
+    /*
+    std::normal_distribution <double> dist_test(83.0, 1.0);
+    QVector <double> vec822, vec824, vec826, vec828, vec830, vec832, vec834, vec836, vec838, vec840;
+    for(int i = 0; i < 10000; i++)
+    {
+        while(true)
+        {
+            double new_ge = dist_test(engine);
+
+            if(new_ge >= 82.0 && new_ge <= 84.0)
+            {
+                if(new_ge <= 82.2)
+                    vec822 << new_ge;
+                else if(new_ge <= 82.4)
+                    vec824 << new_ge;
+                else if(new_ge <= 82.6)
+                    vec826 << new_ge;
+                else if(new_ge <= 82.8)
+                    vec828 << new_ge;
+                else if(new_ge <= 83.0)
+                    vec830 << new_ge;
+                else if(new_ge <= 83.2)
+                    vec832 << new_ge;
+                else if(new_ge <= 83.4)
+                    vec834 << new_ge;
+                else if(new_ge <= 83.6)
+                    vec836 << new_ge;
+                else if(new_ge <= 83.8)
+                    vec838 << new_ge;
+                else if(new_ge <= 84)
+                    vec840 << new_ge;
+                break;
+            }
+        }
+    }
+
+    QFile tfile(qApp->applicationDirPath() + "/" + "rand.txt");
+    tfile.open(QIODevice::ReadWrite);
+    QTextStream tio(&tfile);
+    tio << vec822.size() << " " << vec822[0] << "\n";
+    tio << vec824.size() << " " << vec824[0] << "\n";
+    tio << vec826.size() << " " << vec826[0] << "\n";
+    tio << vec828.size() << " " << vec828[0] << "\n";
+    tio << vec830.size() << " " << vec830[0] << "\n";
+    tio << vec832.size() << " " << vec832[0] << "\n";
+    tio << vec834.size() << " " << vec834[0] << "\n";
+    tio << vec836.size() << " " << vec836[0] << "\n";
+    tio << vec838.size() << " " << vec838[0] << "\n";
+    tio << vec840.size() << " " << vec840[0] << "\n";
+    tfile.flush();
+    tfile.close();
+    */
+
     for(int i = 0; i < simNum; i++)
     {
         QString newInpFilePath = qApp->applicationDirPath() + "/Sandbox/" + QString("%1_%2.inp").arg(id).arg(i);
@@ -69,8 +123,15 @@ void Worker::run()
                 // id_ge[1] is node GE
 
                 // get new GE value using random range
-                std::uniform_real_distribution <double> uniform_dist(id_ge[1].toDouble() - bottom, id_ge[1].toDouble() + top);
-                double new_ge = uniform_dist(engine);
+                //std::uniform_real_distribution <double> uniform_dist(id_ge[1].toDouble() - bottom, id_ge[1].toDouble() + top);
+                std::normal_distribution <double> normal_dist(id_ge[1].toDouble(), top);
+                double new_ge;
+                while(true)
+                {
+                    new_ge = normal_dist(engine);
+                    if(new_ge >= id_ge[1].toDouble() - bottom && new_ge <= id_ge[1].toDouble() + top)
+                        break;
+                }
 
                 ge_part[j].replace(id_ge[1], QString::number(new_ge) + " ");
                 newInp += ge_part[j] + "\n";
