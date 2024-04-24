@@ -1,4 +1,4 @@
-# EPAMK
+# EPADEM
 The application is used to assess the configuration of the water supply network in conditions where geodetic elevations of the earth's surface are known approximately.
 
 ![image](https://github.com/9onemandev/EPADEM/assets/163633812/182c243c-5c71-4514-9b8c-e1dea8e2c4c3)
