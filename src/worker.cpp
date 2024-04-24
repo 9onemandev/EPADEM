@@ -86,6 +86,22 @@ void Worker::run()
     tfile.close();
     */
 
+    /*
+    std::normal_distribution <double> dist_test(83.0, 1.0);
+    QFile tfile(qApp->applicationDirPath() + "/" + "rand.txt");
+    tfile.open(QIODevice::ReadWrite);
+    QTextStream tio(&tfile);
+
+    for(int i = 0; i < 100; i++)
+    {
+        double new_ge = dist_test(engine);
+        tio << new_ge << "\n";
+    }
+
+    tfile.flush();
+    tfile.close();
+    */
+
     for(int i = 0; i < simNum; i++)
     {
         QString newInpFilePath = qApp->applicationDirPath() + "/Sandbox/" + QString("%1_%2.inp").arg(id).arg(i);
@@ -123,15 +139,8 @@ void Worker::run()
                 // id_ge[1] is node GE
 
                 // get new GE value using random range
-                //std::uniform_real_distribution <double> uniform_dist(id_ge[1].toDouble() - bottom, id_ge[1].toDouble() + top);
                 std::normal_distribution <double> normal_dist(id_ge[1].toDouble(), top);
-                double new_ge;
-                while(true)
-                {
-                    new_ge = normal_dist(engine);
-                    if(new_ge >= id_ge[1].toDouble() - bottom && new_ge <= id_ge[1].toDouble() + top)
-                        break;
-                }
+                double new_ge = normal_dist(engine);
 
                 ge_part[j].replace(id_ge[1], QString::number(new_ge) + " ");
                 newInp += ge_part[j] + "\n";
